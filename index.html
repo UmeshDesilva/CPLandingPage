@@ -164,21 +164,22 @@
 
   const ctaButtons = document.querySelectorAll("#header-cta, #hero-cta, #mobile-header-cta");
 
-  ctaButtons.forEach(button => {
-    button.addEventListener("click", (e) => {
-      e.preventDefault();
+ctaButtons.forEach(button => {
+  button.addEventListener("click", (e) => {
+    e.preventDefault();
 
-      let adStep = parseInt(localStorage.getItem("adStep") || "0");
+    let adStep = parseInt(localStorage.getItem("adStep") || "0");
 
-      if (adStep < adUrls.length) {
-        window.location.href = adUrls[adStep];
-        localStorage.setItem("adStep", (adStep + 1).toString());
-      } else {
-        window.location.href = canvaProUrl;
-        localStorage.setItem("adStep", "0"); // Reset for future use
-      }
-    });
+    if (adStep < adUrls.length) {
+      window.open(adUrls[adStep], '_blank');
+      localStorage.setItem("adStep", (adStep + 1).toString());
+    } else {
+      window.open(canvaProUrl, '_blank');
+      localStorage.setItem("adStep", "0"); // Reset for future use
+    }
   });
+});
+
 
   // Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
